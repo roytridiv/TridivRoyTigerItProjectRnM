@@ -35,7 +35,11 @@ class RepositoryImplementation(
         }
     }
 
-    override fun getAllCharactersData(): LiveData<List<CharacterDaoItem>> {
+    override fun getCharacterDetailsFromDB(characterId: Int): LiveData<CharacterDaoItem> {
+        return characterDao.getCharacterDetails(characterId)
+    }
+
+    override fun getAllCharactersDataFromDB(): LiveData<List<CharacterDaoItem>> {
         return characterDao.getAllTelevisionData()
     }
 

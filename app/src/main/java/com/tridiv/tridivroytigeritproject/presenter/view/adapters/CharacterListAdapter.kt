@@ -1,5 +1,6 @@
 package com.tridiv.tridivroytigeritproject.presenter.view.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +39,11 @@ class CharacterListAdapter(
                     .into(charactersIv)
                 characterTitleTv.text = "Name: ".plus(listItem.name)
                 statusTv.text = "Status: ".plus(listItem.status)
-               // if(listItem.status == "Alive")
+//                when (it.status) {
+//                    "Alive" -> binding.statusValTv.setTextColor(Color.parseColor("#38AF6D"))
+//                    "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
+//                    else -> binding.statusValTv.setTextColor(Color.parseColor("#FEBF42"))
+//                }
             }
 
             itemView.setOnClickListener {
@@ -48,6 +53,6 @@ class CharacterListAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, tvData: CharacterDaoItem)
+        fun onItemClick(position: Int, characterData: CharacterDaoItem)
     }
 }

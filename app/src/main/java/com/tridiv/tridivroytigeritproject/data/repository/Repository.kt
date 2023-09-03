@@ -10,7 +10,9 @@ interface Repository {
     suspend fun getCharactersList(): CharactersRespBody?
     suspend fun getCharacterDetails(id: Int): CharacterDetailsRespBody?
 
-    fun getAllCharactersData(): LiveData<List<CharacterDaoItem>>
+    fun getAllCharactersDataFromDB(): LiveData<List<CharacterDaoItem>>
+
+    fun getCharacterDetailsFromDB(characterId: Int): LiveData<CharacterDaoItem>
 
     fun insertCharacterDataInDb(item: CharacterDaoItem)
 

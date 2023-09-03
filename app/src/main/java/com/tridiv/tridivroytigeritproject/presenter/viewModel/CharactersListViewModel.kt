@@ -54,8 +54,15 @@ class CharactersListViewModel @Inject constructor(
 
     var charactersDataListResponse = MutableLiveData<List<CharacterDaoItem>>()
     fun observeDataInputInDB(context: LifecycleOwner) {
-        repository.getAllCharactersData().observe(context) {
+        repository.getAllCharactersDataFromDB().observe(context) {
             charactersDataListResponse.postValue(it)
+        }
+    }
+
+    var characterDetailsDataResponse = MutableLiveData<CharacterDaoItem>()
+    fun observeCharacterDataFromDb(characterId: Int, context: LifecycleOwner) {
+        repository.getCharacterDetailsFromDB(characterId).observe(context) {
+            characterDetailsDataResponse.postValue(it)
         }
     }
 

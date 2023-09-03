@@ -18,4 +18,7 @@ interface CharactersDataDao {
     @Query("DELETE FROM CharacterDaoItem")
     fun clearTable()
 
+    @Query("select * from CharacterDaoItem where character_id = :characterId")
+    fun getCharacterDetails(characterId: Int): LiveData<CharacterDaoItem>
+
 }

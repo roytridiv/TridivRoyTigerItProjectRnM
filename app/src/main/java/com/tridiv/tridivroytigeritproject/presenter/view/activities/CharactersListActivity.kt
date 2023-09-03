@@ -1,5 +1,6 @@
 package com.tridiv.tridivroytigeritproject.presenter.view.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -30,14 +31,13 @@ class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemC
     private val linearLayoutManager by lazy { LinearLayoutManager(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
         initUi()
         viewModel.observeDataInputInDB(this)
         GlobalScope.launch(Dispatchers.IO) {
             delay(1000L)
         }
         registerObservers()
-
-
     }
 
     private fun initUi() {
@@ -61,12 +61,15 @@ class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemC
 
 
 
-    override fun onItemClick(position: Int, tvData: CharacterDaoItem) {
-        TODO("Not yet implemented")
+    override fun onItemClick(position: Int, characterData: CharacterDaoItem) {
+        val intent = Intent(this@CharactersListActivity, CharacterDetailsActivity::class.java)
+        intent.putExtra("character_id", characterData.characterId)
+        startActivity(intent)
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         finishAffinity()
     }
+
+
 }

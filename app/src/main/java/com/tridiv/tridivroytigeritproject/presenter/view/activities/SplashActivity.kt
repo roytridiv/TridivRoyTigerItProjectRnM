@@ -27,6 +27,12 @@ class SplashActivity : BaseActivity() {
         setContentView(binding.root)
         if(!isNetworkAvailable()){
             binding.logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.pulse))
+            viewModel.observeDataInputInDB(this)
+            viewModel.charactersDataListResponse.observe(this){
+                if(it.isNotEmpty()){
+                    startActivity(Intent(this@SplashActivity, CharactersListActivity::class.java))
+                }
+            }
             AlertDialog.Builder(this)
                 .setTitle("No Internet!")
                 .setMessage("Please check your internet connection and try again.")
