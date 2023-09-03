@@ -32,6 +32,7 @@ class CharacterListAdapter(
     override fun onBindViewHolder(holder: CharactersListViewHolder, position: Int) {
         with(holder){
             val listItem = charactersList[position]
+            println("-----------Adapter Called-----------"+ listItem.name)
             with(binding){
                 if(listItem.image.isNotEmpty()) Picasso.get().load(listItem.image)
                     .into(charactersIv)

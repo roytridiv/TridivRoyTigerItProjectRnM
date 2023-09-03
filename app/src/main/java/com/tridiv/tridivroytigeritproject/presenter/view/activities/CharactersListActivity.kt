@@ -30,13 +30,23 @@ class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemC
     private val linearLayoutManager by lazy { LinearLayoutManager(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initUi()
         viewModel.observeDataInputInDB(this)
         GlobalScope.launch(Dispatchers.IO) {
             delay(1000L)
         }
         registerObservers()
-        initUi()
 
+
+    }
+
+    private fun initUi() {
+        binding.characterListRv.layoutManager = linearLayoutManager
+        binding.characterListRv.adapter = characterListAdapter
+//        binding.characterListRv.apply {
+//            layoutManager = linearLayoutManager
+//            adapter = characterListAdapter
+//        }
     }
 
     private fun registerObservers() {
@@ -49,14 +59,14 @@ class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemC
         }
     }
 
-    private fun initUi() {
-        binding.characterListRv.apply {
-            layoutManager = linearLayoutManager
-            adapter = characterListAdapter
-        }
-    }
+
 
     override fun onItemClick(position: Int, tvData: CharacterDaoItem) {
         TODO("Not yet implemented")
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
     }
 }
