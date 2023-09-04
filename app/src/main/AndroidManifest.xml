@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TridivRoyTigerItProjectRnM">
         <activity
+            android:name=".presenter.view.activities.CharacterDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".presenter.view.activities.CharactersListActivity"
             android:exported="false" />
         <activity

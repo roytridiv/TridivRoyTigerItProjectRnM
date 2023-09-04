@@ -3,16 +3,18 @@ package com.tridiv.tridivroytigeritproject.presenter.view.activities
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
 import androidx.activity.viewModels
-import com.tridiv.tridivroytigerit.presenter.viewModel.CharactersListViewModel
-import com.tridiv.tridivroytigeritproject.R
+import com.squareup.picasso.Picasso
+import com.tridiv.tridivroytigerit.presenter.viewModel.CharactersViewModel
 import com.tridiv.tridivroytigeritproject.databinding.ActivityCharacterDetailsBinding
-import com.tridiv.tridivroytigeritproject.databinding.ActivityCharactersListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterDetailsActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityCharacterDetailsBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<CharactersListViewModel>()
+    private val viewModel by viewModels<CharactersViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -21,6 +23,8 @@ class CharacterDetailsActivity : AppCompatActivity() {
 
         viewModel.observeCharacterDataFromDb(characterId,this)
         viewModel.characterDetailsDataResponse.observe(this) {
+            if(it.image.isNotEmpty()) Picasso.get().load(it.image)
+                .into(binding.characterImage)
             binding.nameTv.text = it.name
             binding.statusValTv.text = it.status
             binding.originValTv.text = it.origin
@@ -31,6 +35,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
                 "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
                 else -> binding.statusValTv.setTextColor(Color.parseColor("#FEBF42"))
             }
+            binding.progressBar.visibility = GONE
         }
 
     }

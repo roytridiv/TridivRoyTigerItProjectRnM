@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tridivtigritproject.data.model.CharacterDaoItem
 import com.tridiv.tridivroytigeritproject.presenter.view.adapters.CharacterListAdapter
-import com.tridiv.tridivroytigerit.presenter.viewModel.CharactersListViewModel
+import com.tridiv.tridivroytigerit.presenter.viewModel.CharactersViewModel
 import com.tridiv.tridivroytigeritproject.databinding.ActivityCharactersListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemClickListener  {
     private val binding by lazy { ActivityCharactersListBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<CharactersListViewModel>()
+    private val viewModel by viewModels<CharactersViewModel>()
 
     private var charactersListResp: MutableList<CharacterDaoItem> = mutableListOf()
     private val characterListAdapter by lazy {
