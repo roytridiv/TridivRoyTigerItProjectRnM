@@ -2,8 +2,10 @@ package com.tridiv.tridivroytigeritproject.data.repository
 
 import androidx.lifecycle.LiveData
 import com.example.tridivtigritproject.data.model.CharacterDaoItem
+import com.tridiv.tridivroytigeritproject.data.domain.ResultData
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharactersListResp.CharactersRespBody
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharaterDetailsResp.CharacterDetailsRespBody
+import retrofit2.Response
 
 interface Repository {
 
@@ -17,4 +19,6 @@ interface Repository {
     fun insertCharacterDataInDb(item: CharacterDaoItem)
 
     fun clearDbNew()
+
+    suspend fun getCharListTemp(): ResultData<Response<CharactersRespBody>>
 }

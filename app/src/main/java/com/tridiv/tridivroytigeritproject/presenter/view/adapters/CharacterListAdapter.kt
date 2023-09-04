@@ -12,9 +12,9 @@ import com.tridiv.tridivroytigeritproject.databinding.CharacterListItemBinding
 class CharacterListAdapter(
     private var charactersList: MutableList<CharacterDaoItem>,
     private val listener: OnItemClickListener,
-): RecyclerView.Adapter<CharacterListAdapter.CharactersListViewHolder>() {
+) : RecyclerView.Adapter<CharacterListAdapter.CharactersListViewHolder>() {
 
-    inner class CharactersListViewHolder( val binding: CharacterListItemBinding) :
+    inner class CharactersListViewHolder(val binding: CharacterListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersListViewHolder {
@@ -31,19 +31,18 @@ class CharacterListAdapter(
     override fun getItemCount() = charactersList.size
 
     override fun onBindViewHolder(holder: CharactersListViewHolder, position: Int) {
-        with(holder){
+        with(holder) {
             val listItem = charactersList[position]
-            println("-----------Adapter Called-----------"+ listItem.name)
-            with(binding){
-                if(listItem.image.isNotEmpty()) Picasso.get().load(listItem.image)
+            with(binding) {
+                if (listItem.image.isNotEmpty()) Picasso.get().load(listItem.image)
                     .into(charactersIv)
                 characterTitleTv.text = "Name: ".plus(listItem.name)
-                statusTv.text = "Status: ".plus(listItem.status)
-//                when (it.status) {
-//                    "Alive" -> binding.statusValTv.setTextColor(Color.parseColor("#38AF6D"))
-//                    "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
-//                    else -> binding.statusValTv.setTextColor(Color.parseColor("#FEBF42"))
-//                }
+                statusValTv.text = listItem.status
+                when (listItem.status) {
+                    "Alive" -> binding.statusValTv.setTextColor(Color.parseColor("#38AF6D"))
+                    "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
+                    else -> binding.statusValTv.setTextColor(Color.parseColor("#FEBF42"))
+                }
             }
 
             itemView.setOnClickListener {

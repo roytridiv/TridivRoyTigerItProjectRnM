@@ -2,44 +2,64 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:padding="15dp"
+    android:background="@drawable/green_rounded_corner_bg">
 
-    <ImageView
+<!--    <ImageView-->
+<!--        android:id="@+id/characters_iv"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:src="@drawable/ic_launcher_foreground"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/characters_iv"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/rnm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/characters_iv"
         android:layout_marginStart="20dp">
         <TextView
             android:id="@+id/character_title_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Rick Shanchez" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Rick Shanchez Rick Shanchez Rick Shanchez Rick Shanchez Rick Shanchez Rick Shanchez Rick Shanchez Rick Shanchez Rick Shanchez " />
 
         <TextView
             android:id="@+id/status_tv"
-            android:layout_width="203dp"
-            android:layout_height="17dp"
-            android:ellipsize="end"
-            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/character_title_tv"
             app:layout_constraintTop_toBottomOf="@id/character_title_tv"
+            android:text="Status: " />
+
+        <TextView
+            android:id="@+id/status_val_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16dp"
+           app:layout_constraintTop_toTopOf="@id/status_tv"
+            app:layout_constraintStart_toEndOf="@id/status_tv"
             tools:text="Alive" />
 
 

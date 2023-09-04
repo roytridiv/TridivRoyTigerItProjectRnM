@@ -8,8 +8,12 @@ import com.example.tridivtigritproject.data.model.CharacterDetailsReqBody
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharactersListResp.CharactersRespBody
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharaterDetailsResp.CharacterDetailsRespBody
 import com.tridiv.tridivroytigerit.data.db.CharactersDataDao
+import com.tridiv.tridivroytigeritproject.data.domain.ResultData
 import com.tridiv.tridivroytigeritproject.data.network.RestApiService
 import com.tridiv.tridivroytigeritproject.data.repository.Repository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class RepositoryImplementation(
     private val apiService: RestApiService,
@@ -49,5 +53,30 @@ class RepositoryImplementation(
 
     override fun clearDbNew() {
         characterDao.clearTable()
+    }
+
+
+    override suspend fun getCharListTemp(): ResultData<Response<CharactersRespBody>> {
+        val result = withContext(Dispatchers.IO) {
+            try {
+                val request =
+                    apiService.getCharactersList()
+                ResultData.Success(request)
+            } catch (exception: Exception) {
+                ResultData.Error(exception)
+            }
+        }
+
+        return  result
+//        return when (result) {
+//            is ResultData.Success -> {
+//                val response = result.data
+////                withContext(ioDispatcher) { appDao.setListCountries(response) }
+//                ResultData.Success(response)
+//            }
+//            is ResultData.Error -> {
+//                ResultData.Error("")
+//            }
+//        }
     }
 }

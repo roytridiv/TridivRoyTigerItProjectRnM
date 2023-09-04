@@ -2,6 +2,8 @@ package com.tridiv.tridivroytigeritproject.presenter.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.tridiv.tridivroytigerit.presenter.viewModel.CharactersViewModel
+import com.tridiv.tridivroytigeritproject.data.domain.ResultData
+import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharactersListResp.CharactersRespBody
 import com.tridiv.tridivroytigeritproject.data.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -32,12 +34,12 @@ class CharactersViewModelTest {
     }
     @Test
     fun getCharacters()= runTest{
-//       Mockito.`when`(repository.getCharactersList()).thenReturn()
-//        val systemUnderTest = CharactersViewModel(repository)
-//        systemUnderTest.getCharactersList()
-//        testDispatcher.scheduler.advanceUntilIdle()
-//
-//        Assert.assertEquals(0)
+       Mockito.`when`(repository.getCharactersList()).thenReturn(CharactersRespBody(null,null))
+        val systemUnderTest = CharactersViewModel(repository)
+        systemUnderTest.getCharactersList()
+        testDispatcher.scheduler.advanceUntilIdle()
+        val result = systemUnderTest.liveDataFromTesting
+        Assert.assertEquals(0,result)
     }
 
     @After
