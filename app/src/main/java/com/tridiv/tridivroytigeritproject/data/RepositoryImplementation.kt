@@ -68,15 +68,5 @@ class RepositoryImplementation(
         }
 
         return  result
-//        return when (result) {
-//            is ResultData.Success -> {
-//                val response = result.data
-////                withContext(ioDispatcher) { appDao.setListCountries(response) }
-//                ResultData.Success(response)
-//            }
-//            is ResultData.Error -> {
-//                ResultData.Error("")
-//            }
-//        }
     }
 }

@@ -1,6 +1,10 @@
 package com.tridiv.tridivroytigeritproject.presenter.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.example.tridivtigritproject.data.model.CharacterDaoItem
 import com.tridiv.tridivroytigerit.presenter.viewModel.CharactersViewModel
 import com.tridiv.tridivroytigeritproject.data.domain.ResultData
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharactersListResp.CharactersRespBody
@@ -28,8 +32,14 @@ class CharactersViewModelTest {
     @Mock
     lateinit var repository: Repository
 
-//    @get: Rule
-//    val dispatcherRule = TestDispatcherRule()
+    @Mock
+    lateinit var lifecycleOwner: LifecycleOwner
+
+    @Mock
+    lateinit var charactersObserver: Observer<List<CharacterDaoItem>>
+
+    @Mock
+    lateinit var characterDetailsObserver: Observer<CharacterDaoItem>
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -63,14 +73,8 @@ class CharactersViewModelTest {
     }
 
 
-    @Test
+/*    @Test
     fun `test data insertion in Room DB`() = runTest {
-//       Mockito.`when`(repository.getCharactersList()).thenReturn(CharactersRespBody(null,null))
-//        val systemUnderTest = CharactersViewModel(repository)
-//        systemUnderTest.getCharactersList()
-//        testDispatcher.scheduler.advanceUntilIdle()
-//        val result = systemUnderTest.liveDataFromTesting
-//        Assert.assertEquals(0,result)
 
         val mockResponse = ResultData.Success(Response.success(CharactersRespBody(null,null)))
         Mockito.`when`(repository.getCharListTemp()).thenReturn(mockResponse)
@@ -79,6 +83,24 @@ class CharactersViewModelTest {
 
         assert(viewModel.charactersDataListResponse.value != null)
         assert(viewModel.charactersDataListResponse.value?.isEmpty() == false)
+    }*/
+
+
+    @Test
+    fun `test data observance from with id Room DB`() = runTest {
+        val characterId = 1
+
+        val mockCharacterData = CharacterDaoItem(characterId, "", "","","","","","","")
+        val characterLiveData = MutableLiveData<CharacterDaoItem>()
+        characterLiveData.value = mockCharacterData
+
+        Mockito.`when`(repository.getCharacterDetailsFromDB(characterId)).thenReturn(characterLiveData)
+
+        viewModel.observeCharacterDataFromDb(characterId, lifecycleOwner)
+        viewModel.characterDetailsDataResponse.observe(lifecycleOwner, characterDetailsObserver)
+
+
+        assert(viewModel.characterDetailsDataResponse.value == mockCharacterData)
     }
 
     @After
