@@ -72,12 +72,20 @@
                />
 
 
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/details_tv"
+                app:layout_constraintBottom_toBottomOf="@id/details_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="#EDEDED"
+                />
             <TextView
                 android:id="@+id/details_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20sp"
                 android:text="Details"
                 android:fontFamily="sans-serif-black"
@@ -89,11 +97,14 @@
 
 
 
+
+
             <TextView
                 android:id="@+id/species_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
                 android:text="Species: "
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -104,7 +115,7 @@
                 android:id="@+id/species_val_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="40dp"
                 tools:text="Human"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -116,6 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+
                 android:text="Gender : "
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -126,11 +138,10 @@
                 android:id="@+id/gender_val_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 tools:text="Male"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/gender_tv"
+                app:layout_constraintStart_toStartOf="@id/species_val_tv"
                 app:layout_constraintTop_toTopOf="@id/gender_tv"
                 app:layout_constraintBottom_toBottomOf="@id/gender_tv" />
 
@@ -149,11 +160,11 @@
                 android:id="@+id/origin_val_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+
                 android:text="Earth"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/origin_tv"
+                app:layout_constraintStart_toStartOf="@id/gender_val_tv"
                 app:layout_constraintTop_toTopOf="@id/origin_tv"
                 app:layout_constraintBottom_toBottomOf="@id/origin_tv" />
 
@@ -173,11 +184,10 @@
                 android:id="@+id/location_val_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:text="Emalo"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/location_tv"
+                app:layout_constraintStart_toStartOf="@id/origin_val_tv"
                 app:layout_constraintTop_toTopOf="@id/location_tv"
                 app:layout_constraintBottom_toBottomOf="@id/location_tv" />
 

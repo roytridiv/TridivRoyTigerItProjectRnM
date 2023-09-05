@@ -25,6 +25,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         if(!isNetworkAvailable()){
             binding.logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.pulse))
             viewModel.observeDataInputInDB(this)
@@ -46,7 +47,7 @@ class SplashActivity : BaseActivity() {
             binding.logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.pulse))
             lifecycleScope.launch(Dispatchers.IO) {
                 viewModel.getCharactersList()
-                delay(1000L)
+                delay(10000L)
                 withContext(Dispatchers.Main) {
                     startActivity(Intent(this@SplashActivity, CharactersListActivity::class.java))
                 }

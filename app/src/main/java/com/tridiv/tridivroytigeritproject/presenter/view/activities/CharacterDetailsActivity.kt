@@ -30,6 +30,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
             binding.originValTv.text = it.origin
             binding.genderValTv.text = it.gender
             binding.locationValTv.text = it.location
+            binding.speciesValTv.text = it.species
             when (it.status) {
                 "Alive" -> binding.statusValTv.setTextColor(Color.parseColor("#38AF6D"))
                 "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
