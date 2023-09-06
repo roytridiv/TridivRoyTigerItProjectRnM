@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Earth"
+                android:text="Earth EarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarth"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/gender_val_tv"

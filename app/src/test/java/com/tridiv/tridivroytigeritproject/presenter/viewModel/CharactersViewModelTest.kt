@@ -46,10 +46,14 @@ class CharactersViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var viewModel: CharactersViewModel
+
+
     @Before
     fun setUp() {
-        MockitoAnnotations.openMocks(this)
+//        System.setProperty("org.mockito.mockmaker", "android")
+//       MockitoAnnotations.openMocks(this)
         Dispatchers.setMain(testDispatcher)
+
         viewModel = CharactersViewModel(repository)
     }
 
