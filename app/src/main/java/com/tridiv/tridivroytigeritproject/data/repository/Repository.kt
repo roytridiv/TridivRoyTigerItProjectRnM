@@ -9,7 +9,7 @@ import retrofit2.Response
 
 interface Repository {
 
-    suspend fun getCharactersList(): CharactersRespBody?
+    //suspend fun getCharactersList(): CharactersRespBody?
     suspend fun getCharacterDetails(id: Int): CharacterDetailsRespBody?
 
     fun getAllCharactersDataFromDB(): LiveData<List<CharacterDaoItem>>
@@ -20,5 +20,5 @@ interface Repository {
 
     fun clearDbNew()
 
-    suspend fun getCharListTemp(): ResultData<Response<CharactersRespBody>>
+    suspend fun getCharactersList(): ResultData<Response<CharactersRespBody>>
 }

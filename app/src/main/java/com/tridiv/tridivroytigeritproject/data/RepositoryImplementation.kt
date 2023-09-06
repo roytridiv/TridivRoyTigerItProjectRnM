@@ -21,14 +21,14 @@ class RepositoryImplementation(
     val context: Context
 ) : Repository {
 
-    override suspend fun getCharactersList(): CharactersRespBody? {
-        return try {
-            apiService.getCharactersList().body()
-        } catch (e: Exception) {
-            Log.e("REPO_ERROR", e.message ?: "")
-            null
-        }
-    }
+//    override suspend fun getCharactersList(): CharactersRespBody? {
+//        return try {
+//            apiService.getCharactersList().body()
+//        } catch (e: Exception) {
+//            Log.e("REPO_ERROR", e.message ?: "")
+//            null
+//        }
+//    }
 
     override suspend fun getCharacterDetails(id: Int): CharacterDetailsRespBody? {
         return try {
@@ -56,7 +56,7 @@ class RepositoryImplementation(
     }
 
 
-    override suspend fun getCharListTemp(): ResultData<Response<CharactersRespBody>> {
+    override suspend fun getCharactersList(): ResultData<Response<CharactersRespBody>> {
         val result = withContext(Dispatchers.IO) {
             try {
                 val request =

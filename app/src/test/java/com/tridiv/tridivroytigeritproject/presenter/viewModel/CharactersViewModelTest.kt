@@ -50,8 +50,8 @@ class CharactersViewModelTest {
 
     @Before
     fun setUp() {
-//        System.setProperty("org.mockito.mockmaker", "android")
-//       MockitoAnnotations.openMocks(this)
+        System.setProperty("org.mockito.mockmaker", "android")
+        MockitoAnnotations.openMocks(this)
         Dispatchers.setMain(testDispatcher)
 
         viewModel = CharactersViewModel(repository)
@@ -60,13 +60,6 @@ class CharactersViewModelTest {
 
     @Test
     fun `test fetching character list from api success`() = runTest {
-//       Mockito.`when`(repository.getCharactersList()).thenReturn(CharactersRespBody(null,null))
-//        val systemUnderTest = CharactersViewModel(repository)
-//        systemUnderTest.getCharactersList()
-//        testDispatcher.scheduler.advanceUntilIdle()
-//        val result = systemUnderTest.liveDataFromTesting
-//        Assert.assertEquals(0,result)
-
         val mockResponse = ResultData.Success(Response.success(CharactersRespBody(null,null)))
         Mockito.`when`(repository.getCharListTemp()).thenReturn(mockResponse)
 
@@ -76,18 +69,6 @@ class CharactersViewModelTest {
         assert(viewModel.charactersDataListResponse.value?.isEmpty() == false)
     }
 
-
-/*    @Test
-    fun `test data insertion in Room DB`() = runTest {
-
-        val mockResponse = ResultData.Success(Response.success(CharactersRespBody(null,null)))
-        Mockito.`when`(repository.getCharListTemp()).thenReturn(mockResponse)
-
-        viewModel.getCharactersList()
-
-        assert(viewModel.charactersDataListResponse.value != null)
-        assert(viewModel.charactersDataListResponse.value?.isEmpty() == false)
-    }*/
 
 
     @Test
