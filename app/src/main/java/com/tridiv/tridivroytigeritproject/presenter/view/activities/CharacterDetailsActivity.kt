@@ -11,7 +11,7 @@ import com.tridiv.tridivroytigeritproject.databinding.ActivityCharacterDetailsBi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharacterDetailsActivity : AppCompatActivity() {
+class CharacterDetailsActivity : BaseActivity(){
 
     private val binding by lazy { ActivityCharacterDetailsBinding.inflate(layoutInflater) }
     private val viewModel by viewModels<CharactersViewModel>()
@@ -21,7 +21,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
 
         val characterId = intent.extras?.getInt("character_id") ?: -1
 
-        viewModel.observeCharacterDataFromDb(characterId,this)
+        viewModel.observeCharacterDataFromDb(characterId)
         viewModel.characterDetailsDataResponse.observe(this) {
             if(it.image.isNotEmpty()) Picasso.get().load(it.image)
                 .into(binding.characterImage)
@@ -34,7 +34,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
             when (it.status) {
                 "Alive" -> binding.statusValTv.setTextColor(Color.parseColor("#38AF6D"))
                 "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
-                else -> binding.statusValTv.setTextColor(Color.parseColor("#FEBF42"))
+                else -> binding.statusValTv.setTextColor(Color.parseColor("#FF8C00"))
             }
             binding.progressBar.visibility = GONE
         }

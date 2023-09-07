@@ -41,7 +41,7 @@ class CharacterListAdapter(
                 when (listItem.status) {
                     "Alive" -> binding.statusValTv.setTextColor(Color.parseColor("#38AF6D"))
                     "Dead" -> binding.statusValTv.setTextColor(Color.parseColor("#E9533A"))
-                    else -> binding.statusValTv.setTextColor(Color.parseColor("#FEBF42"))
+                    else -> binding.statusValTv.setTextColor(Color.parseColor("#FF8C00"))
                 }
             }
 
