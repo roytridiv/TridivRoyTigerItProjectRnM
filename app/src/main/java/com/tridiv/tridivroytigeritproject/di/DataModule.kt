@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.tridiv.tridivroytigerit.data.db.AppDatabase
 import com.tridiv.tridivroytigerit.data.db.CharactersDataDao
-import com.tridiv.tridivroytigeritproject.data.Constants
+import com.tridiv.tridivroytigeritproject.data.domain.common.Constants
 import com.tridiv.tridivroytigeritproject.data.RepositoryImplementation
 import com.tridiv.tridivroytigeritproject.data.network.RestApiService
 import com.tridiv.tridivroytigeritproject.data.repository.Repository
@@ -24,12 +24,10 @@ class DataModule {
         @ApplicationContext context: Context,
         apiService: RestApiService,
         charactersDataDao: CharactersDataDao,
-
         ): Repository =
         RepositoryImplementation(
             apiService,
-            charactersDataDao,
-            context
+            charactersDataDao
         )
 
     @Singleton

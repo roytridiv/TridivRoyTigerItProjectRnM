@@ -13,12 +13,12 @@ interface CharactersDataDao {
     fun saveCharactersInDB(item: CharacterDaoItem)
 
     @Query("select * from CharacterDaoItem")
-    fun getAllTelevisionData(): LiveData<List<CharacterDaoItem>>
+    fun getAllTelevisionData(): List<CharacterDaoItem>
 
     @Query("DELETE FROM CharacterDaoItem")
     fun clearTable()
 
     @Query("select * from CharacterDaoItem where character_id = :characterId")
-    fun getCharacterDetails(characterId: Int): LiveData<CharacterDaoItem>
+    fun getCharacterDetails(characterId: Int): CharacterDaoItem
 
 }

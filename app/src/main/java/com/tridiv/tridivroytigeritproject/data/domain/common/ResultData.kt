@@ -1,4 +1,4 @@
-package com.tridiv.tridivroytigeritproject.data.domain
+package com.tridiv.tridivroytigeritproject.data.domain.common
 
 sealed class ResultData<out T : Any?> {
     data class Success<out T : Any?>(val data: T) : ResultData<T>()

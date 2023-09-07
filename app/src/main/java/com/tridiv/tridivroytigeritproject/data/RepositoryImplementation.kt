@@ -1,14 +1,12 @@
 package com.tridiv.tridivroytigeritproject.data
 
-import android.content.Context
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.example.tridivtigritproject.data.model.CharacterDaoItem
 import com.example.tridivtigritproject.data.model.CharacterDetailsReqBody
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharactersListResp.CharactersRespBody
 import com.tridiv.tridivroytigeritproject.data.model.networkPojo.CharaterDetailsResp.CharacterDetailsRespBody
 import com.tridiv.tridivroytigerit.data.db.CharactersDataDao
-import com.tridiv.tridivroytigeritproject.data.domain.ResultData
+import com.tridiv.tridivroytigeritproject.data.domain.common.ResultData
 import com.tridiv.tridivroytigeritproject.data.network.RestApiService
 import com.tridiv.tridivroytigeritproject.data.repository.Repository
 import kotlinx.coroutines.Dispatchers
@@ -17,33 +15,15 @@ import retrofit2.Response
 
 class RepositoryImplementation(
     private val apiService: RestApiService,
-    private val characterDao: CharactersDataDao,
-    val context: Context
+    private val characterDao: CharactersDataDao
 ) : Repository {
 
-//    override suspend fun getCharactersList(): CharactersRespBody? {
-//        return try {
-//            apiService.getCharactersList().body()
-//        } catch (e: Exception) {
-//            Log.e("REPO_ERROR", e.message ?: "")
-//            null
-//        }
-//    }
 
-    override suspend fun getCharacterDetails(id: Int): CharacterDetailsRespBody? {
-        return try {
-            apiService.getCharacterDetails(CharacterDetailsReqBody(id)).body()
-        } catch (e: Exception) {
-            Log.e("REPO_ERROR", e.message ?: "")
-            null
-        }
-    }
-
-    override fun getCharacterDetailsFromDB(characterId: Int): LiveData<CharacterDaoItem> {
+    override fun getCharacterDetailsFromDB(characterId: Int): CharacterDaoItem {
         return characterDao.getCharacterDetails(characterId)
     }
 
-    override fun getAllCharactersDataFromDB(): LiveData<List<CharacterDaoItem>> {
+    override fun getAllCharactersDataFromDB(): List<CharacterDaoItem> {
         return characterDao.getAllTelevisionData()
     }
 
@@ -55,6 +35,15 @@ class RepositoryImplementation(
         characterDao.clearTable()
     }
 
+    override suspend fun getCharacterDetails(id: Int): CharacterDetailsRespBody? {
+        return try {
+            apiService.getCharacterDetails(CharacterDetailsReqBody(id)).body()
+        } catch (e: Exception) {
+            Log.e("REPO_ERROR", e.message ?: "")
+            null
+        }
+    }
+
 
     override suspend fun getCharactersList(): ResultData<Response<CharactersRespBody>> {
         val result = withContext(Dispatchers.IO) {
@@ -63,6 +52,7 @@ class RepositoryImplementation(
                     apiService.getCharactersList()
                 ResultData.Success(request)
             } catch (exception: Exception) {
+                println(exception.message)
                 ResultData.Error(exception)
             }
         }

@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/activity_character_details.xml" value="0.2484375" />
-        <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/activity_characters_list.xml" value="0.25" />
+        <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/activity_character_details.xml" value="0.17696629213483145" />
+        <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/activity_characters_list.xml" value="0.23333333333333334" />
         <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/activity_main.xml" value="0.337037037037037" />
         <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/character_list_item.xml" value="0.337037037037037" />
+        <entry key="..\:/TridivRoyTigerItProjectRnM/app/src/main/res/layout/custom_snackbar_layout.xml" value="0.2" />
       </map>
     </option>
   </component>

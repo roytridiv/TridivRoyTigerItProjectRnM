@@ -4,7 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#2AAA8A"
+        app:layout_constraintBottom_toBottomOf="@id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Character Details"
+        android:id="@+id/header"
+        android:textSize="28sp"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <ScrollView
         android:id="@+id/scrollViewBalance"
         android:layout_width="match_parent"
@@ -14,8 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,20 +44,20 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_margin="20dp"
+                android:src="@drawable/rnm"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/rnm"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rick"
                 android:padding="15dp"
+                android:text="Rick"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/character_image" />
@@ -54,9 +70,9 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@id/status_val_tv"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/name_tv"
-                app:layout_constraintHorizontal_chainStyle="packed"/>
+                app:layout_constraintTop_toBottomOf="@id/name_tv" />
 
             <TextView
                 android:id="@+id/status_val_tv"
@@ -65,38 +81,33 @@
                 android:text="Alive"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/status_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/status_tv"
-                app:layout_constraintTop_toTopOf="@id/status_tv"
-                app:layout_constraintBottom_toBottomOf="@id/status_tv"
-               />
+                app:layout_constraintTop_toTopOf="@id/status_tv" />
 
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/details_tv"
+                android:background="#EDEDED"
                 app:layout_constraintBottom_toBottomOf="@id/details_tv"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="#EDEDED"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/details_tv" />
+
             <TextView
                 android:id="@+id/details_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20sp"
-                android:text="Details"
                 android:fontFamily="sans-serif-black"
+                android:text="Details"
                 android:textColor="@color/black"
                 android:textSize="28sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/status_tv" />
-
-
-
-
 
 
             <TextView
@@ -113,104 +124,111 @@
 
             <TextView
                 android:id="@+id/species_val_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                tools:text="Human"
+                android:layout_marginEnd="4dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/species_tv"
                 app:layout_constraintTop_toTopOf="@id/species_tv"
-                app:layout_constraintBottom_toBottomOf="@id/species_tv"/>
+                tools:text="Human Human Human Human Human Human Human Human Human Human Human Human " />
+
             <TextView
                 android:id="@+id/gender_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-
+                android:layout_marginTop="4dp"
                 android:text="Gender : "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/species_tv" />
+                app:layout_constraintTop_toBottomOf="@id/species_val_tv" />
 
             <TextView
                 android:id="@+id/gender_val_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Male"
+                android:layout_marginEnd="4dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/species_val_tv"
                 app:layout_constraintTop_toTopOf="@id/gender_tv"
-                app:layout_constraintBottom_toBottomOf="@id/gender_tv" />
+                tools:text="Male Male Male Male Male Male Male Male Male Male Male Male Male " />
 
             <TextView
                 android:id="@+id/origin_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
                 android:text="Origin: "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gender_tv" />
+                app:layout_constraintTop_toBottomOf="@id/gender_val_tv" />
 
             <TextView
                 android:id="@+id/origin_val_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
-                android:text="Earth EarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarth"
+                android:layout_marginEnd="4dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/gender_val_tv"
                 app:layout_constraintTop_toTopOf="@id/origin_tv"
-                app:layout_constraintBottom_toBottomOf="@id/origin_tv" />
+                tools:text="Earth EarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarthEarth" />
 
             <TextView
                 android:id="@+id/location_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
                 android:text="Location: "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/origin_tv" />
+                app:layout_constraintTop_toBottomOf="@id/origin_val_tv" />
 
 
             <TextView
                 android:id="@+id/location_val_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Emalo"
+                android:layout_marginEnd="4dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/origin_val_tv"
                 app:layout_constraintTop_toTopOf="@id/location_tv"
-                app:layout_constraintBottom_toBottomOf="@id/location_tv" />
+                tools:text="Emalo Emalo Emalo Emalo Emalo Emalo Emalo Emalo Emalo Emalo Emalo Emalo Emalo " />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
     <View
         android:id="@+id/white_bg"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        android:indeterminateTintMode="src_atop"
         android:indeterminateTint="@color/black"
+        android:indeterminateTintMode="src_atop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-   
+
 </androidx.constraintlayout.widget.ConstraintLayout>

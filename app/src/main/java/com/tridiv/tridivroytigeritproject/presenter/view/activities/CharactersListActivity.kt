@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemClickListener  {
+class CharactersListActivity : BaseActivity(), CharacterListAdapter.OnItemClickListener  {
     private val binding by lazy { ActivityCharactersListBinding.inflate(layoutInflater) }
     private val viewModel by viewModels<CharactersViewModel>()
 
@@ -33,28 +33,19 @@ class CharactersListActivity : AppCompatActivity(), CharacterListAdapter.OnItemC
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initUi()
-        viewModel.observeDataInputInDB(this)
-        GlobalScope.launch(Dispatchers.IO) {
-            delay(1000L)
-        }
+        viewModel.observeDataInputInDB()
         registerObservers()
     }
 
     private fun initUi() {
         binding.characterListRv.layoutManager = linearLayoutManager
         binding.characterListRv.adapter = characterListAdapter
-//        binding.characterListRv.apply {
-//            layoutManager = linearLayoutManager
-//            adapter = characterListAdapter
-//        }
     }
 
     private fun registerObservers() {
         viewModel.charactersDataListResponse.observe(this) {
             if (charactersListResp.isNotEmpty()) charactersListResp.clear()
             charactersListResp.addAll(it.toMutableList())
-            for(item in charactersListResp) println(" -------item name-------"+ item.name)
-            println("---------------------------length"+charactersListResp.size)
             characterListAdapter.notifyDataSetChanged()
         }
     }
