@@ -18,24 +18,24 @@ Here we have tried to ensure Clean architecture
 **Unit testing**
 Unit testing is done for ViewModel and Repository
 
-![My Image](/ss4.png)
-![My Image](/ss1.png)
+![My Image](/ss4.png = 250x)
+![My Image](/ss1.png = 250x)
 
 ###Tech Libraries Used:
 
-Kotlin Coroutines
-Dagger-Hilt
-LiveData
-Lifecycle
-ViewModel
-Retrofit
-OkHttp
+Kotlin Coroutines<br />
+Dagger-Hilt<br />
+LiveData<br />
+Lifecycle<br />
+ViewModel<br />
+Retrofit<br />
+OkHttp<br />
 
-Room - for local storage
-Data Binding - for UI binding
-Moshi - for JSON object creation
-Picasso - for loading image
-Mockito - for unit testing
+Room - for local storage<br />
+Data Binding - for UI binding<br />
+Moshi - for JSON object creation<br />
+Picasso - for loading image<br />
+Mockito - for unit testing<br />
 
 
 
