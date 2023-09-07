@@ -18,6 +18,7 @@ Here we have tried to ensure Clean architecture
 **Unit testing**
 Unit testing is done for ViewModel and Repository
 
+<img src="/ss4.png" width=50% height=50%>
 ![My Image](/ss4.png width="48")
 ![My Image](/ss1.png width="48")
 
